@@ -27,22 +27,8 @@ INSERT INTO menu_items (name, category, price) VALUES
 ('Baked Mac', 'Pasta', 6.50);
 
 SELECT * FROM menu_items;
-
-DROP TABLE IF EXISTS groceries;
-
-CREATE TABLE groceries (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER);
-INSERT INTO groceries VALUES (1, "Bananas", 4, 7);
-INSERT INTO groceries VALUES(2, "Peanut Butter", 1, 2);
-INSERT INTO groceries VALUES(3, "Dark Chocolate Bars", 2, 2);
-INSERT INTO groceries VALUES(4, "Ice cream", 1, 12);
-INSERT INTO groceries VALUES(5, "Cherries", 6, 2);
-INSERT INTO groceries VALUES(6, "Chocolate syrup", 1, 4);
-
---Querying the table, note that caputal letters are commands
-SELECT name FROM groceries; -- to retreive all data from groceries table
-SELECT * FROM groceries ORDER BY aisle;
-SELECT * FROM groceries WHERE aisle > 5 ORDER BY aisle;
--- Example in Querying
+---------------------------------
+-- Sample in Querying
 DROP TABLE IF EXISTS movies; --Drop table before recreating
 
 CREATE TABLE movies (id INTEGER PRIMARY KEY, name TEXT, release_year INTEGER);
@@ -55,3 +41,22 @@ INSERT INTO movies VALUES (6, "Disney's Up", 2009);
 
 SELECT * FROM movies;
 SELECT * FROM movies WHERE release_year > 2000 ORDER BY release_year;
+-----------------------------------
+DROP TABLE IF EXISTS groceries;
+
+CREATE TABLE groceries (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER);
+INSERT INTO groceries VALUES (1, "Bananas", 4, 7);
+INSERT INTO groceries VALUES(2, "Peanut Butter", 1, 2);
+INSERT INTO groceries VALUES(3, "Dark Chocolate Bars", 2, 2);
+INSERT INTO groceries VALUES(4, "Ice cream", 1, 12);
+INSERT INTO groceries VALUES(5, "Cherries", 6, 2);
+INSERT INTO groceries VALUES(6, "Chocolate syrup", 1, 4);
+
+--QUERYING the table, note that caputal letters are commands
+SELECT name FROM groceries; -- to retreive all data from groceries table
+SELECT * FROM groceries ORDER BY aisle;
+SELECT * FROM groceries WHERE aisle > 5 ORDER BY aisle;
+--AGGREGATING DATA
+
+SELECT SUM(quantity) FROM groceries;
+SELECT aisle, SUM(quantity) FROM groceries GROUP BY aisle;
